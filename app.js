@@ -25,7 +25,7 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://bajaj-challenge-frontend-psi.vercel.app",
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"],
 };
