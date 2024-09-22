@@ -1,3 +1,20 @@
+// const express = require("express");
+// const bodyParser = require("body-parser");
+// const cors = require("cors");
+// const dotenv = require("dotenv");
+// const bfhlRoutes = require("./routes/bfhlRoutes");
+
+// dotenv.config();
+// const app = express();
+
+// app.use(cors());
+// app.use(bodyParser.json({ limit: "50mb" })); // Handles large JSON payloads
+
+// // Routes
+// app.use("/bfhl", bfhlRoutes);
+
+// module.exports = app;
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -7,10 +24,15 @@ const bfhlRoutes = require("./routes/bfhlRoutes");
 dotenv.config();
 const app = express();
 
-app.use(cors());
-app.use(bodyParser.json({ limit: "50mb" })); // Handles large JSON payloads
+const corsOptions = {
+  origin: "http://localhost:3000",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"],
+};
 
-// Routes
+app.use(cors(corsOptions));
+app.use(bodyParser.json({ limit: "50mb" }));
+
 app.use("/bfhl", bfhlRoutes);
 
 module.exports = app;
